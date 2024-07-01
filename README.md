@@ -1,6 +1,5 @@
 # Live Code Keuangan
 
-### Soal Enigma 2.0
 
 Organisasi XYZ akan mencatat semua pengeluaran mereka, baik itu uang masuk maupun uang keluar. Berikut contoh data
 pengeluaran:
