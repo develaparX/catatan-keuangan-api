@@ -8,32 +8,29 @@ import (
 )
 
 // SendSingleResponse sends a single item response
-func SendSingleResponse(ctx *gin.Context, message string, data any, code int) {
+func SendSingleResponse(ctx *gin.Context, data any, code int) {
 	ctx.JSON(http.StatusOK, dto.SingleResponse{
 		Status: dto.Status{
-			Code:    code,
-			Message: message,
+			ResponseCode: code,
 		},
 		Data: data,
 	})
 }
 
 // SendPagingResponse sends a paginated list response
-func SendPagingResponse(ctx *gin.Context, message string, data interface{}, paging dto.Paging, code int) {
+func SendPagingResponse(ctx *gin.Context, data interface{}, paging dto.Paging, code int) {
 	dataList, ok := data.([]any)
 	if !ok {
 		ctx.JSON(http.StatusInternalServerError, dto.SingleResponse{
 			Status: dto.Status{
-				Code:    http.StatusInternalServerError,
-				Message: "Invalid data type",
+				ResponseCode: http.StatusInternalServerError,
 			},
 		})
 		return
 	}
 	ctx.JSON(http.StatusOK, dto.PagingResponse{
 		Status: dto.Status{
-			Code:    code,
-			Message: message,
+			ResponseCode: code,
 		},
 		Data:   dataList,
 		Paging: paging,
@@ -41,11 +38,10 @@ func SendPagingResponse(ctx *gin.Context, message string, data interface{}, pagi
 }
 
 // SendErrorResponse sends an error response
-func SendErrorResponse(ctx *gin.Context, message string, code int) {
+func SendErrorResponse(ctx *gin.Context, code int) {
 	ctx.JSON(code, dto.SingleResponse{
 		Status: dto.Status{
-			Code:    code,
-			Message: message,
+			ResponseCode: code,
 		},
 	})
 }

@@ -20,15 +20,15 @@ type ExpenseController struct {
 func (c *ExpenseController) CreateExpense(ctx *gin.Context) {
 	var createExpenseDTO dto.CreateExpenseDTO
 	if err := ctx.ShouldBindJSON(&createExpenseDTO); err != nil {
-		utils.SendErrorResponse(ctx, err.Error(), http.StatusBadRequest)
+		utils.SendErrorResponse(ctx, 401)
 		return
 	}
 	expense, err := c.expenseService.CreateExpense(&createExpenseDTO)
 	if err != nil {
-		utils.SendErrorResponse(ctx, err.Error(), http.StatusInternalServerError)
+		utils.SendErrorResponse(ctx, 401)
 		return
 	}
-	utils.SendSingleResponse(ctx, "Success Create New Expense", expense, http.StatusOK)
+	utils.SendSingleResponse(ctx, expense, 2000101)
 }
 
 func (c *ExpenseController) ListExpenses(ctx *gin.Context) {
@@ -39,7 +39,7 @@ func (c *ExpenseController) ListExpenses(ctx *gin.Context) {
 
 	expenses, totalData, err := c.expenseService.ListExpenses(page, size, startDate, endDate)
 	if err != nil {
-		utils.SendErrorResponse(ctx, err.Error(), http.StatusInternalServerError)
+		utils.SendErrorResponse(ctx, http.StatusInternalServerError)
 		return
 	}
 
@@ -49,17 +49,17 @@ func (c *ExpenseController) ListExpenses(ctx *gin.Context) {
 		expenseList = append(expenseList, expense)
 	}
 
-	utils.SendPagingResponse(ctx, "Success Retrieve Expenses", expenseList, dto.Paging{Page: page, TotalData: totalData}, http.StatusOK)
+	utils.SendPagingResponse(ctx, expenseList, dto.Paging{Page: page, TotalData: totalData}, 2000101)
 }
 
 func (c *ExpenseController) GetExpenseByID(ctx *gin.Context) {
 	id := ctx.Param("id")
 	expense, err := c.expenseService.GetExpenseByID(id)
 	if err != nil {
-		utils.SendErrorResponse(ctx, err.Error(), http.StatusInternalServerError)
+		utils.SendErrorResponse(ctx, http.StatusInternalServerError)
 		return
 	}
-	utils.SendSingleResponse(ctx, "Success Retrieve Expense", expense, http.StatusOK)
+	utils.SendSingleResponse(ctx, expense, 2000101)
 }
 
 func (c *ExpenseController) GetExpensesByType(ctx *gin.Context) {
@@ -69,7 +69,7 @@ func (c *ExpenseController) GetExpensesByType(ctx *gin.Context) {
 
 	expenses, totalData, err := c.expenseService.GetExpensesByType(transactionType, page, size)
 	if err != nil {
-		utils.SendErrorResponse(ctx, err.Error(), http.StatusInternalServerError)
+		utils.SendErrorResponse(ctx, http.StatusInternalServerError)
 		return
 	}
 
@@ -79,7 +79,7 @@ func (c *ExpenseController) GetExpensesByType(ctx *gin.Context) {
 		expenseList = append(expenseList, expense)
 	}
 
-	utils.SendPagingResponse(ctx, "Success Retrieve Expenses by Type", expenseList, dto.Paging{Page: page, TotalData: totalData}, http.StatusOK)
+	utils.SendPagingResponse(ctx, expenseList, dto.Paging{Page: page, TotalData: totalData}, 2000101)
 }
 
 func (e *ExpenseController) Route() {

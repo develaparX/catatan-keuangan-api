@@ -1,8 +1,7 @@
 package dto
 
 type Status struct {
-	Code    int    `json:"code"`
-	Message string `json:"message"`
+	ResponseCode int `json:"responseCode"`
 }
 
 type SingleResponse struct {

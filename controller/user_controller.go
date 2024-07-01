@@ -5,7 +5,6 @@ import (
 	"livecode-catatan-keuangan/models/dto"
 	"livecode-catatan-keuangan/service"
 	"livecode-catatan-keuangan/utils"
-	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
@@ -18,29 +17,29 @@ type UserController struct {
 func (u *UserController) loginHandler(ctx *gin.Context) {
 	var payload dto.LoginDto
 	if err := ctx.ShouldBindJSON(&payload); err != nil {
-		utils.SendErrorResponse(ctx, "Failed to parsing payload", http.StatusBadRequest)
+		utils.SendErrorResponse(ctx, 404)
 		return
 	}
 
 	response, errors := u.service.Login(payload)
 	if errors != nil {
-		utils.SendErrorResponse(ctx, errors.Error(), http.StatusInternalServerError)
+		utils.SendErrorResponse(ctx, 404)
 		return
 	}
-	utils.SendSingleResponse(ctx, "Success Login", response, http.StatusOK)
+	utils.SendSingleResponse(ctx, response, 2000101)
 }
 
 func (u *UserController) registerHandler(ctx *gin.Context) {
 	var payload models.User
 	if err := ctx.ShouldBindJSON(&payload); err != nil {
-		utils.SendErrorResponse(ctx, "Failed to Parsing Payload", http.StatusBadRequest)
+		utils.SendErrorResponse(ctx, 401)
 	}
 
 	data, errors := u.service.CreateNew(payload)
 	if errors != nil {
-		utils.SendErrorResponse(ctx, errors.Error(), http.StatusInternalServerError)
+		utils.SendErrorResponse(ctx, 404)
 	}
-	utils.SendSingleResponse(ctx, "Success Create New User", data, http.StatusOK)
+	utils.SendSingleResponse(ctx, data, 2000101)
 }
 
 func (u *UserController) Route() {
