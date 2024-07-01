@@ -1,0 +1,123 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "livecode-catatan-keuangan",
+    "collectionId": "fd5b29a5-2d7e-446d-a2db-f7abd872ec1a",
+    "dateExported": "2024-07-01T09:58:12.233Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "9f5768f2-14b2-4fbf-a522-bcbd2932e88a",
+            "colId": "fd5b29a5-2d7e-446d-a2db-f7abd872ec1a",
+            "containerId": "",
+            "name": "REGISTER USER",
+            "url": "localhost:4200/api/v1/users/register",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-07-01T09:54:29.828Z",
+            "modified": "2024-07-01T09:54:29.828Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": " {\r\n        \"email\": \"test@gmail.com\",\r\n        \"password\": \"test\"\r\n     }",
+                "form": []
+            }
+        },
+        {
+            "_id": "d954478a-1bf8-4923-89a4-0e4a9337e375",
+            "colId": "fd5b29a5-2d7e-446d-a2db-f7abd872ec1a",
+            "containerId": "",
+            "name": "LOGIN USER",
+            "url": "localhost:4200/api/v1/users/login",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-07-01T09:54:53.446Z",
+            "modified": "2024-07-01T09:55:29.963Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": " {\n        \"email\": \"test@gmail.com\",\n        \"password\": \"test\"\n     }",
+                "form": []
+            }
+        },
+        {
+            "_id": "220084fb-abcd-4221-aca0-55489143146e",
+            "colId": "fd5b29a5-2d7e-446d-a2db-f7abd872ec1a",
+            "containerId": "",
+            "name": "LIST EXPENSES",
+            "url": "localhost:4200/api/v1/expenses",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-07-01T09:56:27.214Z",
+            "modified": "2024-07-01T09:56:27.214Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJFbmlnbWFDYW1wIiwiZXhwIjoxNzE5ODI4NDM4LCJpYXQiOjE3MTk4MjQ4MzgsInVzZXJJZCI6IjgwMTg3MTc5LTE2NWYtNGE0YS05ZjA2LWM1MDVhYzZlOGRlZCJ9.0BIpvKkgH51fnHawZ-fjxM2UFbkEuji4c-X6w4yKvPQ"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n        \"amount\": 250000,\n        \"transactionType\": \"CREDIT\",\n        \"description\": \"Tambahan jajan\"\n     }",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJFbmlnbWFDYW1wIiwiZXhwIjoxNzE5ODI4NDM4LCJpYXQiOjE3MTk4MjQ4MzgsInVzZXJJZCI6IjgwMTg3MTc5LTE2NWYtNGE0YS05ZjA2LWM1MDVhYzZlOGRlZCJ9.0BIpvKkgH51fnHawZ-fjxM2UFbkEuji4c-X6w4yKvPQ"
+            }
+        },
+        {
+            "_id": "3b08d515-695e-4af7-a72a-bb5f262bdcd9",
+            "colId": "fd5b29a5-2d7e-446d-a2db-f7abd872ec1a",
+            "containerId": "",
+            "name": "GET EXPENSES BY ID",
+            "url": "localhost:4200/api/v1/expenses/4afc9630-5171-4700-8f12-ec3c8157ae24",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-07-01T09:57:13.603Z",
+            "modified": "2024-07-01T09:57:13.603Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJFbmlnbWFDYW1wIiwiZXhwIjoxNzE5ODI4NDM4LCJpYXQiOjE3MTk4MjQ4MzgsInVzZXJJZCI6IjgwMTg3MTc5LTE2NWYtNGE0YS05ZjA2LWM1MDVhYzZlOGRlZCJ9.0BIpvKkgH51fnHawZ-fjxM2UFbkEuji4c-X6w4yKvPQ"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n        \"amount\": 250000,\n        \"transactionType\": \"CREDIT\",\n        \"description\": \"Tambahan jajan\"\n     }",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJFbmlnbWFDYW1wIiwiZXhwIjoxNzE5ODI4NDM4LCJpYXQiOjE3MTk4MjQ4MzgsInVzZXJJZCI6IjgwMTg3MTc5LTE2NWYtNGE0YS05ZjA2LWM1MDVhYzZlOGRlZCJ9.0BIpvKkgH51fnHawZ-fjxM2UFbkEuji4c-X6w4yKvPQ"
+            }
+        },
+        {
+            "_id": "92996f3d-92e4-4c8c-b653-6280f21f0d1f",
+            "colId": "fd5b29a5-2d7e-446d-a2db-f7abd872ec1a",
+            "containerId": "",
+            "name": "GET EXPENSES BY TYPE",
+            "url": "localhost:4200/api/v1/expenses/type/CREDIT",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2024-07-01T09:58:07.602Z",
+            "modified": "2024-07-01T09:58:07.602Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJFbmlnbWFDYW1wIiwiZXhwIjoxNzE5ODI4NDM4LCJpYXQiOjE3MTk4MjQ4MzgsInVzZXJJZCI6IjgwMTg3MTc5LTE2NWYtNGE0YS05ZjA2LWM1MDVhYzZlOGRlZCJ9.0BIpvKkgH51fnHawZ-fjxM2UFbkEuji4c-X6w4yKvPQ"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n        \"amount\": 250000,\n        \"transactionType\": \"CREDIT\",\n        \"description\": \"Tambahan jajan\"\n     }",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJFbmlnbWFDYW1wIiwiZXhwIjoxNzE5ODI4NDM4LCJpYXQiOjE3MTk4MjQ4MzgsInVzZXJJZCI6IjgwMTg3MTc5LTE2NWYtNGE0YS05ZjA2LWM1MDVhYzZlOGRlZCJ9.0BIpvKkgH51fnHawZ-fjxM2UFbkEuji4c-X6w4yKvPQ"
+            }
+        }
+    ],
+    "ref": "DkABk5SfooVHesQvOKJRWhP8QbrL-p1s_StEXsGYuokS4lG6ztgjAZ3u9jsjlo9TzyXEBKx-5EUZbic-3edliw"
+}

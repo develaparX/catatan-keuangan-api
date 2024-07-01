@@ -30,8 +30,7 @@ func SendPagingResponse(ctx *gin.Context, data interface{}, paging dto.Paging, c
 	}
 	ctx.JSON(http.StatusOK, dto.PagingResponse{
 		Status: dto.Status{
-			ResponseCode: code,
-		},
+			ResponseCode: code},
 		Data:   dataList,
 		Paging: paging,
 	})
