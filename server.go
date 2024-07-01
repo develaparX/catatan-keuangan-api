@@ -18,6 +18,7 @@ import (
 type Server struct {
 	uS      service.UserService
 	jS      service.JwtService
+	eS      service.ExpenseService
 	aM      middleware.AuthMiddleware
 	engine  *gin.Engine //untuk start engine gin
 	portApp string
@@ -28,6 +29,7 @@ func (s *Server) initiateRoute() {
 	//bisa menambah grouping lagi disini
 	routerGroup := s.engine.Group("/api/v1")
 	controller.NewUserController(s.uS, routerGroup).Route()
+	controller.NewExpenseController(s.eS, routerGroup, s.aM).Route()
 }
 
 // func untuk running
@@ -51,9 +53,11 @@ func NewServer() *Server {
 
 	portApp := co.AppPort
 	userRepo := repository.NewUserRepository(db)
+	expenseRepo := repository.NewExpenseRepository(db)
 
 	jwtService := service.NewJwtService(co.SecurityConfig)
 	userService := service.NewUserService(userRepo, jwtService)
+	expenseService := service.NewExpenseService(expenseRepo)
 
 	authMiddleware := middleware.NewAuthMiddleware(jwtService)
 
@@ -62,6 +66,7 @@ func NewServer() *Server {
 		uS:      userService,
 		jS:      jwtService,
 		aM:      authMiddleware,
+		eS:      expenseService,
 		portApp: portApp,
 		engine:  gin.Default(),
 	}

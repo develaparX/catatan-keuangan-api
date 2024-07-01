@@ -9,26 +9,24 @@ import (
 )
 
 type AuthMiddleware interface {
-	CheckToken(roles ...string) gin.HandlerFunc
+	CheckToken() gin.HandlerFunc
 }
 
 type authMiddleware struct {
 	jwtService service.JwtService
 }
 
-// untuk mengecek
 // CheckToken implements AuthMiddleware.
-func (a *authMiddleware) CheckToken(roles ...string) gin.HandlerFunc {
+func (a *authMiddleware) CheckToken() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		header := ctx.GetHeader("Authorization")
 		token := strings.Replace(header, "Bearer ", "", -1)
 		claims, err := a.jwtService.VerifyToken(token)
 		if err != nil {
-			ctx.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"message": "UnAuthorized"})
+			ctx.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"message": "Unauthorized"})
 			return
 		}
 		ctx.Set("userId", claims["userId"])
-
 		ctx.Next()
 	}
 }
